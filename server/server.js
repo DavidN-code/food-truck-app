@@ -5,13 +5,9 @@ const ordersRoute = require('./routes/orders');
 const menuRoutes = require('./routes/menu');
 require('dotenv').config();
 
-
-
-
 const app = express();
 app.use(cors());
 app.use(express.json());
-
 
 // 👇 Base route to confirm server is running
 app.get('/', (req, res) => {
@@ -19,36 +15,24 @@ app.get('/', (req, res) => {
   res.send('API is running');
 });
 
+// 👇 Register routes before DB connect
+app.use('/api/menu', menuRoutes);
+app.use('/api/orders', ordersRoute);
 
 const startServer = async () => {
-    try {
-// Connect to MongoDB and set up routes
-console.log('🔥 Starting server...');
-await mongoose.connect(process.env.MONGO_URI);
-console.log('✅ Reached after Mongo connect');
-
-
-
-  
+  try {
+    console.log('🔥 Starting server...');
+    await mongoose.connect(process.env.MONGO_URI);
     console.log('✅ MongoDB connected');
-    app.use('/api/menu', menuRoutes);
-    app.use('/api/orders', ordersRoute);
-    const PORT = process.env.PORT || 5050;
 
+    const PORT = process.env.PORT || 5050;
     app.listen(PORT, () => {
       console.log(`✅ Server running at http://localhost:${PORT}`);
-      console.log(`🌐 Deployed URL (if on Render): https://food-truck-backend-lfmn.onrender.com`);
-
+      console.log(`🌐 Deployed URL: https://food-truck-backend-lfmn.onrender.com`);
     });
-
-}
-  catch(err) {
+  } catch (err) {
     console.error('❌ MongoDB connection error:', err);
   }
 };
-  
-
 
 startServer();
-
-
