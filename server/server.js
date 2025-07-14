@@ -12,6 +12,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
+// 👇 Base route to confirm server is running
+app.get('/', (req, res) => {
+  console.log('✅ GET / route was hit by a browser!');
+  res.send('API is running');
+});
+
+
 const startServer = async () => {
     try {
 // Connect to MongoDB and set up routes
