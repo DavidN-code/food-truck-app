@@ -27,7 +27,8 @@ const startServer = async () => {
     console.log('✅ MongoDB connected');
 
     const PORT = process.env.PORT || 5050;
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`✅ Server running at http://0.0.0.0:${PORT}`);
       console.log(`✅ Server running at http://localhost:${PORT}`);
       console.log(`🌐 Deployed URL: https://food-truck-backend-lfmn.onrender.com`);
     });
