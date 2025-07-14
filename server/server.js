@@ -24,6 +24,7 @@ console.log('✅ Reached after Mongo connect');
 
   
     console.log('✅ MongoDB connected');
+    app.use('/api/menu', menuRoutes);
     app.use('/api/orders', ordersRoute);
     const PORT = process.env.PORT || 5050;
 
