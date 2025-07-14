@@ -28,8 +28,10 @@ console.log('✅ Reached after Mongo connect');
     const PORT = process.env.PORT || 5050;
 
     app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+      console.log(`✅ Server running at http://localhost:${PORT}`);
+      console.log(`🌐 Deployed URL (if on Render): https://food-truck-backend-lfmn.onrender.com`);
+
+    });
 
 }
   catch(err) {
