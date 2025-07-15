@@ -18,6 +18,8 @@ app.get('/', (req, res) => {
 // 👇 Register routes before DB connect
 app.use('/api/menu', menuRoutes);
 app.use('/api/orders', ordersRoute);
+console.log('✅ Registered /api/menu');
+
 
 const startServer = async () => {
   try {

@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const MenuItem = require('../models/MenuItem');
 
+console.log('✅ menu.js routes loaded');
+
+
 // GET all menu items
 router.get('/', async (req, res) => {
   try {
