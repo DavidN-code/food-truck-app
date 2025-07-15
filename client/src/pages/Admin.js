@@ -21,7 +21,7 @@ const Admin = () => {
   }, [isAuthenticated]);
 
   const fetchOrders = () => {
-    fetch('http://localhost:5050/api/orders')
+    fetch('https://food-truck-backend-lfmn.onrender.com/api/orders')
       .then(res => res.json())
       .then(data => setOrders(data))
       .catch(err => console.error('Error fetching orders:', err));
@@ -47,7 +47,7 @@ const Admin = () => {
 
 
   const markComplete = (id) => {
-    fetch(`http://localhost:5050/api/orders/${id}/complete`, {
+    fetch(`https://food-truck-backend-lfmn.onrender.com/api/orders/${id}/complete`, {
       method: 'PATCH',
     })
       .then(res => res.json())
@@ -56,7 +56,7 @@ const Admin = () => {
   };
 
   const deleteOrder = (id) => {
-    fetch(`http://localhost:5050/api/orders/${id}`, {
+    fetch(`https://food-truck-backend-lfmn.onrender.com/api/orders/${id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())
