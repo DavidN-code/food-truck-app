@@ -120,47 +120,50 @@ const Admin = () => {
 </div>
 
       
-      {orders.length === 0 ? (
-        <p>No orders yet.</p>
-      ) : (
-        <table border="1" cellPadding="8" style={{ width: '100%', textAlign: 'left' }}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Item</th>
-              <th>Qty</th>
-              <th>Pickup Time</th>
-              <th>Request</th>
-              <th>Ordered At</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map(order => (
-              <tr key={order._id} style={{ backgroundColor: order.completed ? '#d4edda' : 'white' }}>
-                <td>{order.name}</td>
-                <td>{order.phone}</td>
-                <td>{order.menuItem}</td>
-                <td>{order.quantity}</td>
-                <td>{order.pickupTime || '-'}</td>
-                <td>{order.specialRequest || '-'}</td>
-                <td>{new Date(order.createdAt).toLocaleString()}</td>
-                <td>
-                  {!order.completed ? (
-                    <>
-                      <button onClick={() => markComplete(order._id)}>✅ Mark Complete</button>{' '}
-                      <button onClick={() => deleteOrder(order._id)}>🗑 Delete</button>
-                    </>
-                  ) : (
-                    <span>✅ Done</span>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+{orders.length === 0 ? (
+  <p>No orders yet.</p>
+) : (
+  <div style={{ overflowX: 'auto' }}>
+    <table border="1" cellPadding="8" style={{ width: '100%', textAlign: 'left', minWidth: '600px' }}>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Item</th>
+          <th>Qty</th>
+          <th>Pickup Time</th>
+          <th>Request</th>
+          <th>Ordered At</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {orders.map(order => (
+          <tr key={order._id} style={{ backgroundColor: order.completed ? '#d4edda' : 'white' }}>
+            <td>{order.name}</td>
+            <td>{order.phone}</td>
+            <td>{order.menuItem}</td>
+            <td>{order.quantity}</td>
+            <td>{order.pickupTime || '-'}</td>
+            <td>{order.specialRequest || '-'}</td>
+            <td>{new Date(order.createdAt).toLocaleString()}</td>
+            <td>
+              {!order.completed ? (
+                <>
+                  <button onClick={() => markComplete(order._id)}>✅ Mark Complete</button>{' '}
+                  <button onClick={() => deleteOrder(order._id)}>🗑 Delete</button>
+                </>
+              ) : (
+                <span>✅ Done</span>
+              )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
+
         <br />
         <h2 style={{ marginTop: '2rem' }}>Manage Menu Items</h2>
         <MenuManager />
