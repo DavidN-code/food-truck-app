@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'; // 👈 Add useRef
 import MenuManager from '../components/MenuManager'; // or adjust path if needed
 
-const ADMIN_PASSWORD = 'letmein'; // 🔐 Change this to anything you want
+const ADMIN_PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD; // 🔐 Change this to anything you want -inside .env
 
 const Admin = () => {
   const [orders, setOrders] = useState([]);
