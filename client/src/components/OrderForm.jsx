@@ -16,7 +16,7 @@ const OrderForm = () => {
   const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5050/api/menu')
+    fetch(`${process.env.REACT_APP_API_BASE}/api/menu`)
       .then(res => res.json())
       .then(data => setMenuItems(data))
       .catch(err => console.error('❌ Failed to load menu:', err));
@@ -33,7 +33,7 @@ const OrderForm = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:5050/api/orders', {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE}/api/orders`, {
 
         method: 'POST',
         headers: {
